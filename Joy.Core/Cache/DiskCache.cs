@@ -33,7 +33,7 @@ namespace Joy.Core.Cache
             {
                 File.WriteAllText(
                     GetObjectInfoPath(key),
-                    JsonConvert.SerializeObject(value));
+                    JsonConvert.SerializeObject(value, Formatting.Indented));
 
                 return true;
             }
