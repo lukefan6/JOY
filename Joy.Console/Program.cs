@@ -7,7 +7,7 @@ namespace Joy.Console
     {
         static void Main(string[] args)
         {
-            var allStations = MrtManager.GetAllStations();
+            var allStations = MrtHelper.GetAllStations();
             var random = new Random();
             var nextLine = allStations.ToArray()[random.Next(allStations.Count())];
             System.Console.WriteLine(nextLine.Name);

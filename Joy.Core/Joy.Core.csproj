@@ -48,6 +48,7 @@
       <HintPath>..\packages\ScrapySharp.2.2.63\lib\net40\ScrapySharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Caching" />
@@ -59,12 +60,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MrtManager.cs" />
+    <Compile Include="AppSettingConfig.cs" />
+    <Compile Include="Cache\Base\CacheFactory.cs" />
+    <Compile Include="Cache\DiskCache.cs" />
+    <Compile Include="Cache\Base\ICache.cs" />
+    <Compile Include="DataAccess\Base\IMrtManager.cs" />
+    <Compile Include="DataAccess\Base\Proxy.cs" />
+    <Compile Include="DataAccess\MrtManagerImpl.cs" />
+    <Compile Include="DataAccess\MrtManagerProxy.cs" />
+    <Compile Include="Data\MrtLineInfo.cs" />
+    <Compile Include="Data\MrtStationInfo.cs" />
+    <Compile Include="MrtHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
