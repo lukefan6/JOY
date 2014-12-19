@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Google.Apis.Customsearch.v1.Data;
 using Joy.Core.Data;
 using Joy.Core.DataAccess;
-using Newtonsoft.Json;
 
 
 namespace Joy.Core
@@ -16,14 +16,14 @@ namespace Joy.Core
             return mrtManager.GetAllStations();
         }
 
-        public static string TestCustomSearch()
+        public static IEnumerable<Result> TestCustomSearch()
         {
             var googleSearch = new GoogleSearchProxy
             {
                 Query = GetRandomStationName()
             };
 
-            return JsonConvert.SerializeObject(googleSearch.Execute().First(), Formatting.Indented);
+            return googleSearch.Execute();
         }
 
         private static string GetRandomStationName()

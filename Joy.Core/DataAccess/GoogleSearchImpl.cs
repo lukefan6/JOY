@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Google.Apis.Customsearch.v1;
+using Google.Apis.Customsearch.v1.Data;
 using Google.Apis.Services;
-using Joy.Core.Data;
 using Joy.Core.DataAccess.Base;
 
 namespace Joy.Core.DataAccess
@@ -39,7 +38,7 @@ namespace Joy.Core.DataAccess
             set { _query = value; }
         }
 
-        IEnumerable<GoogleSearchResult> IGoogleSearch.Execute()
+        IEnumerable<Result> IGoogleSearch.Execute()
         {
             var service = new CustomsearchService(new BaseClientService.Initializer
             {
@@ -49,12 +48,7 @@ namespace Joy.Core.DataAccess
             var listRequest = service.Cse.List(_query ?? string.Empty);
             listRequest.Cx = SearchEngineID;
 
-            return listRequest.Execute().Items.Select(x => new GoogleSearchResult
-            {
-                Link = x.Link,
-                Snippet = x.Snippet,
-                Title = x.Title
-            });
+            return listRequest.Execute().Items;
         }
 
         #endregion

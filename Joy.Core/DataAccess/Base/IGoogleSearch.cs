@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Joy.Core.Data;
+using Google.Apis.Customsearch.v1.Data;
 
 namespace Joy.Core.DataAccess.Base
 {
     interface IGoogleSearch
     {
         string Query { get; set; }
-        IEnumerable<GoogleSearchResult> Execute();
+        IEnumerable<Result> Execute();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Google.Apis.Customsearch.v1.Data;
 using Joy.Core.DataAccess.Base;
 
 namespace Joy.Core.DataAccess
@@ -21,9 +22,9 @@ namespace Joy.Core.DataAccess
             set { _googleSearch.Query = value; }
         }
 
-        public IEnumerable<Data.GoogleSearchResult> Execute()
+        public IEnumerable<Result> Execute()
         {
-            var proxy = new Proxy<IEnumerable<Data.GoogleSearchResult>>(
+            var proxy = new Proxy<IEnumerable<Result>>(
                 string.Format("{0}_{1}", cacheKeyPrefix, _googleSearch.Query),
                 () => _googleSearch.Execute());
 
